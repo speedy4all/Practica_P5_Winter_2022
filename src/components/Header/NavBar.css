@@ -1,0 +1,16 @@
+.nav-bar {
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    justify-content: flex-start;
+    height: 65px;
+    background-color: lightskyblue;
+}
+
+.logo-container {
+    flex: 1;
+}
+
+.navigation-bar {
+    flex: 6;
+}
