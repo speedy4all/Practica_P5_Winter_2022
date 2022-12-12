@@ -1,24 +1,21 @@
 import { useState } from "react";
 import Header from "../components/Header";
 import "./App.css";
-
-const defaultTitle = "Navigation title props";
+import useAppReducer from "./useAppReducer";
 
 function App() {
-  const [title, setTitle] = useState(defaultTitle);
-  const [user, setUser] = useState({ name: "React", age: 7 });
-  const [pages, setPages] = useState(["About", "Dashboard", "Contact"]);
-  const [showPage, setShowPage] = useState(true);
-  const [currentPage, setCurrentPage] = useState(0);
   const [newPage, setNewPage] = useState("");
 
+  const { title, pages, currentPage, showPage, user, dispatch } =
+    useAppReducer();
+
   const resetTitle = () => {
-    setTitle(defaultTitle);
+    dispatch({ type: "RESET_TITLE" });
   };
 
   return (
     <>
-      <Header navigationTitle={title} resetTitle={resetTitle} user={user} />
+      <Header />
       <nav>Navigation</nav>
       <main>
         <section>
@@ -28,14 +25,26 @@ function App() {
               <div>
                 <button
                   onClick={() => {
-                    setCurrentPage(currentPage - 1);
+                    if (currentPage > 0) {
+                      dispatch({
+                        type: "SWITCH_PAGE",
+                        payload: currentPage - 1,
+                      });
+                    }
+                    //setCurrentPage(currentPage - 1);
                   }}
                 >
                   &lt;
                 </button>
                 <button
                   onClick={() => {
-                    setCurrentPage(currentPage + 1);
+                    if (currentPage < pages.length - 1) {
+                      dispatch({
+                        type: "SWITCH_PAGE",
+                        payload: currentPage + 1,
+                      });
+                    }
+                    //setCurrentPage(currentPage + 1);
                   }}
                 >
                   &gt;
@@ -49,18 +58,20 @@ function App() {
       <input
         value={title}
         onChange={(e) => {
-          setTitle(e.target.value);
+          dispatch({ type: "UPDATE_TITLE", payload: e.target.value });
         }}
       />
       <button
         onClick={() => {
-          setTitle(defaultTitle);
+          resetTitle();
         }}
       >
         Reset title
       </button>
       <div>
-        <button onClick={() => setShowPage(!showPage)}>Toggle content</button>
+        <button onClick={() => dispatch({ type: "TOGGLE_CONTENT" })}>
+          Toggle content
+        </button>
       </div>
       <div>
         <input
@@ -71,7 +82,7 @@ function App() {
         <button
           onClick={() => {
             if (newPage) {
-              setPages([...pages, newPage]);
+              dispatch({ type: "ADD_NEW_PAGE", payload: newPage });
               setNewPage("");
             }
           }}
