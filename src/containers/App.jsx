@@ -1,17 +1,22 @@
 import { useState } from "react";
 import Header from "../components/Header";
+import { useAppContext } from "../context/App";
 import "./App.css";
-import useAppReducer from "./useAppReducer";
 
 function App() {
-  const [newPage, setNewPage] = useState("");
-
-  const { title, pages, currentPage, showPage, user, dispatch } =
-    useAppReducer();
-
-  const resetTitle = () => {
-    dispatch({ type: "RESET_TITLE" });
-  };
+  const [inputPageText, setInputPageText] = useState("");
+  const {
+    title,
+    pages,
+    currentPage,
+    showPage,
+    resetTitle,
+    decrementPage,
+    incrementPage,
+    updateTitle,
+    toggleContent,
+    createNewPage,
+  } = useAppContext();
 
   return (
     <>
@@ -21,34 +26,14 @@ function App() {
         <section>
           {showPage && (
             <>
-              {pages[currentPage]}
+              {pages.length === 0 ? (
+                <div>Loading content....</div>
+              ) : (
+                pages[currentPage]
+              )}
               <div>
-                <button
-                  onClick={() => {
-                    if (currentPage > 0) {
-                      dispatch({
-                        type: "SWITCH_PAGE",
-                        payload: currentPage - 1,
-                      });
-                    }
-                    //setCurrentPage(currentPage - 1);
-                  }}
-                >
-                  &lt;
-                </button>
-                <button
-                  onClick={() => {
-                    if (currentPage < pages.length - 1) {
-                      dispatch({
-                        type: "SWITCH_PAGE",
-                        payload: currentPage + 1,
-                      });
-                    }
-                    //setCurrentPage(currentPage + 1);
-                  }}
-                >
-                  &gt;
-                </button>
+                <button onClick={decrementPage}>&lt;</button>
+                <button onClick={incrementPage}>&gt;</button>
               </div>
             </>
           )}
@@ -58,7 +43,7 @@ function App() {
       <input
         value={title}
         onChange={(e) => {
-          dispatch({ type: "UPDATE_TITLE", payload: e.target.value });
+          updateTitle(e.target.value);
         }}
       />
       <button
@@ -69,21 +54,19 @@ function App() {
         Reset title
       </button>
       <div>
-        <button onClick={() => dispatch({ type: "TOGGLE_CONTENT" })}>
-          Toggle content
-        </button>
+        <button onClick={toggleContent}>Toggle content</button>
       </div>
       <div>
         <input
           placeholder="Add new page"
-          value={newPage}
-          onChange={(e) => setNewPage(e.target.value)}
+          value={inputPageText}
+          onChange={(e) => setInputPageText(e.target.value)}
         />
         <button
           onClick={() => {
-            if (newPage) {
-              dispatch({ type: "ADD_NEW_PAGE", payload: newPage });
-              setNewPage("");
+            if (inputPageText) {
+              createNewPage(inputPageText);
+              setInputPageText("");
             }
           }}
         >
