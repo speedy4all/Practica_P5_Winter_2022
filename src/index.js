@@ -1,17 +1,21 @@
+import { ConfigProvider } from "antd";
+import "antd/dist/reset.css";
 import React from "react";
 import { createRoot } from "react-dom/client";
-import App from "./containers/App";
-import AppProvider from "./context/App/AppProvider";
 import { BrowserRouter } from "react-router-dom";
+import App from "./containers/App";
+import RootContextProvider from "./context/Root";
 
 const root = document.getElementById("root");
 
 const main = createRoot(root);
 
 main.render(
-  <BrowserRouter>
-    <AppProvider>
-      <App />
-    </AppProvider>
-  </BrowserRouter>
+  <ConfigProvider theme={{ token: { colorPrimary: "#00b96b" } }}>
+    <RootContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </RootContextProvider>
+  </ConfigProvider>
 );
