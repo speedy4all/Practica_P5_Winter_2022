@@ -1,23 +1,23 @@
 import {
-    DashboardOutlined,
-    UploadOutlined,
-    VideoCameraOutlined
+  DashboardOutlined,
+  HeatMapOutlined,
+  UploadOutlined
 } from "@ant-design/icons";
 
 export default [
   {
-    key: "/dashboard",
+    key: "/",
     icon: <DashboardOutlined />,
     label: "Dashboard",
   },
   {
-    key: "/rooms",
-    icon: <VideoCameraOutlined />,
-    label: "Rooms",
+    key: "/places",
+    icon: <HeatMapOutlined />,
+    label: "Places",
   },
   {
-    key: "/upload",
+    key: "/reservations",
     icon: <UploadOutlined />,
-    label: "Upload",
+    label: "Reservations",
   },
 ];
