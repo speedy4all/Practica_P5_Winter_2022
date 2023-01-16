@@ -8,6 +8,7 @@ import {
 
 const RootContext = createContext({});
 
+import { message } from "antd";
 import React from "react";
 import { getCurrentUser, login } from "../../api/authentication";
 import {
@@ -25,6 +26,7 @@ export function useRootContext() {
 
 export default function RootContextProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [messageApi, contextHolder] = message.useMessage();
 
   const doLogin = useCallback((values) => {
     dispatch(loginRequest());
@@ -47,12 +49,13 @@ export default function RootContextProvider({ children }) {
   }, []);
 
   const providerValue = useMemo(
-    () => ({ state, doLogin, fetchCurrentUser }),
+    () => ({ state, doLogin, fetchCurrentUser, messageApi }),
     [state]
   );
 
   return (
     <RootContext.Provider value={providerValue}>
+      {contextHolder}
       {children}
     </RootContext.Provider>
   );
