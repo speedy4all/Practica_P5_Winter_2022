@@ -5,17 +5,26 @@ const fetchDashoard = async () => {
   const places = await axios.get(`${API_URL}/places`);
   return places.data
     .filter(({ available }) => available)
-    .map(({ id, picture, available, price, company }) => ({
+    .map(({ id, picture, available, price, company, about }) => ({
       id,
       picture,
       available,
       price,
       company,
+      about,
     }));
 };
 
 const fetchPlace = async (id) => {
   const places = await axios.get(`${API_URL}/places/${id}`);
+  return places.data;
+};
+
+const fetchReservedPlaces = async () => {
+  const params = new URLSearchParams({ available: false, reserved: true });
+  const places = await axios.get(
+    `${API_URL}/places?${params}`
+  );
   return places.data;
 };
 
@@ -34,4 +43,11 @@ const deletePlace = async (id) => {
   return deleted;
 };
 
-export { fetchDashoard, fetchPlace, createPlace, updatePlace, deletePlace };
+export {
+  fetchDashoard,
+  fetchPlace,
+  createPlace,
+  updatePlace,
+  deletePlace,
+  fetchReservedPlaces,
+};

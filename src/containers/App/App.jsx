@@ -1,3 +1,4 @@
+import { message } from "antd";
 import { useEffect, useMemo } from "react";
 import { useRootContext } from "../../context/Root";
 import Login from "../Login";
@@ -9,7 +10,7 @@ function App() {
     state: { user },
     fetchCurrentUser,
   } = useRootContext();
-
+  const [, contextHolder] = message.useMessage();
   const currentUsername = useMemo(
     () => sessionStorage.getItem("currentUsername"),
     []
@@ -25,7 +26,12 @@ function App() {
     return <Login />;
   }
 
-  return <Root />;
+  return (
+    <>
+      {contextHolder}
+      <Root />
+    </>
+  );
 }
 
 export default App;
