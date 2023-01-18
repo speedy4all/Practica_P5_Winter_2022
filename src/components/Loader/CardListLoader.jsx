@@ -3,7 +3,7 @@ import React from "react";
 
 export default function CardListLoader() {
   return (
-    <Row gutter={[16, 16]}>
+    <Row gutter={[16, 16]} aria-labelledby="card-list-loader">
       {new Array(16)
         .fill()
         .map((_, index) => ({ id: index }))

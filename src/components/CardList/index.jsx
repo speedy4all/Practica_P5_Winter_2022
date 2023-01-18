@@ -10,6 +10,8 @@ export default function CardList({ list, onCardClick }) {
         onClick={() => onCardClick(place)}
         style={{ width: 240 }}
         cover={<img alt={place.company} src={place.picture} />}
+        aria-label={place.company}
+        aria-labelledby={place.company}
       >
         <Card.Meta
           title={place.company}

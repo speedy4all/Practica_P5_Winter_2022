@@ -126,14 +126,14 @@
     },
     {
       "id": "5dc428dc-9036-4d2a-b372-75fe44e7cf72",
-      "available": true,
+      "available": false,
       "price": "$2,906.38",
       "picture": "https://random.imagecdn.app/150/150",
       "company": "HIVEDOM",
       "email": "delaneydotson@hivedom.com",
       "phone": "(962) 486-2655",
       "about": "In ullamco in aliqua voluptate adipisicing consequat pariatur sit. Id consectetur aliqua minim adipisicing commodo nostrud adipisicing minim. Commodo aute magna in excepteur deserunt velit laborum do do aliquip officia et. Nisi non duis adipisicing amet mollit Lorem est mollit adipisicing et exercitation irure culpa occaecat. Eu cillum cupidatat excepteur aliqua esse velit tempor consectetur ut non. Non exercitation et sunt nulla duis dolore cupidatat. Velit quis labore excepteur elit amet officia elit aute.\r\n",
-      "reserved": false
+      "reserved": true
     },
     {
       "id": "b9e11994-eb3d-4b43-a810-127a93f75e48",
@@ -148,13 +148,14 @@
     },
     {
       "id": "bab35bac-7af8-4926-8b06-23feb6a893c6",
-      "available": true,
+      "available": false,
       "price": "$1,145.74",
       "picture": "https://random.imagecdn.app/150/150",
       "company": "CHORIZON",
       "email": "delaneydotson@chorizon.com",
       "phone": "(991) 432-2757",
-      "about": "Magna aute non anim in laboris non et nulla proident ea exercitation reprehenderit in. Elit occaecat non ex sint qui dolor dolore reprehenderit anim laborum deserunt consequat minim. Cillum consequat veniam culpa consectetur duis labore cupidatat tempor excepteur sit veniam dolor. Elit duis laboris duis magna id voluptate irure.\r\n"
+      "about": "Magna aute non anim in laboris non et nulla proident ea exercitation reprehenderit in. Elit occaecat non ex sint qui dolor dolore reprehenderit anim laborum deserunt consequat minim. Cillum consequat veniam culpa consectetur duis labore cupidatat tempor excepteur sit veniam dolor. Elit duis laboris duis magna id voluptate irure.\r\n",
+      "reserved": true
     },
     {
       "id": "e125b6b7-e32d-4f7d-9be8-d9991cad5c21",

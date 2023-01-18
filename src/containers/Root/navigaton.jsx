@@ -43,6 +43,8 @@ export default function Navigation() {
         defaultSelectedKeys={[defaultNavigationKey]}
         selectedKeys={[defaultNavigationKey]}
         items={menu}
+        role="menu"
+        title="navigation-menu"
       />
       <Space
         style={{ flex: 1, height: "calc(100vh - 172px)" }}
